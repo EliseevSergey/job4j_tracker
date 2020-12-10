@@ -2,12 +2,13 @@ package ru.job4j.oop;
 
 public class Dog {
     private String name;
-        public void givenNick(String nick) {
+    private String food;
+
+    public void givenNick(String nick) {
         this.name = nick;
     }
 
-    private String food;
-        public void eat(String choice) {
+    public void eat(String choice) {
         this.food = choice;
     }
 
