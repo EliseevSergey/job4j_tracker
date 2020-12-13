@@ -7,15 +7,15 @@ public class Battery {
         this.load = level;
     }
     public void exchange(Battery another) {
-       this.load = this.load + another.load;
-       another.load = 0;
+       another.load = this.load + another.load;
+       this.load = 0;
     }
 
     public static void main(String[] args) {
         Battery Nokia = new Battery(97);
         Battery iPhone = new Battery(3);
         System.out.println("Nokia:" + Nokia.load + " %" + " iPhone:" + iPhone.load + " %");
-        iPhone.exchange(Nokia);
+        Nokia.exchange(iPhone);
         System.out.println(iPhone.load + " %");
         System.out.println("Nokia:" + Nokia.load + " %" + " iPhone:" + iPhone.load + " %");
     }
