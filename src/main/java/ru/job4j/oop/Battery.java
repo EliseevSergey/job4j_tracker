@@ -16,7 +16,6 @@ public class Battery {
         Battery iPhone = new Battery(3);
         System.out.println("Nokia:" + Nokia.load + " %" + " iPhone:" + iPhone.load + " %");
         Nokia.exchange(iPhone);
-        System.out.println(iPhone.load + " %");
         System.out.println("Nokia:" + Nokia.load + " %" + " iPhone:" + iPhone.load + " %");
     }
 }
