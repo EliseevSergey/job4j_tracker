@@ -16,8 +16,9 @@ public class Point {
     }
 
     public static void main(String[] args) {
-        Point Begin = new Point(3, 6);
-        Point End = new Point(6, 2);
-        System.out.println(Begin.distance(End));
+        Point first = new Point(0, 0);
+        Point second = new Point(4, 0);
+        Point third = new Point(0, 4);
+        System.out.println(first.distance(second));
     }
 }
