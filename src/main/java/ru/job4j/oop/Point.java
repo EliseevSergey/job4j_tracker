@@ -5,20 +5,19 @@ import java.sql.SQLOutput;
 public class Point {
     private int x;
     private int y;
+    private int z;
 
-    public Point(int x, int y) {
+    public Point(int x, int y, int z) {
         this.x = x;
         this.y = y;
+        this.z = z;
     }
 
     public double distance(Point second) {
         return Math.sqrt(Math.pow((this.x - second.x), 2) + Math.pow((this.y - second.y),2));
     }
 
-    public static void main(String[] args) {
-        Point first = new Point(0, 0);
-        Point second = new Point(4, 0);
-        Point third = new Point(0, 4);
-        System.out.println(first.distance(second));
+    public double distance3d(Point second) {
+        return Math.sqrt(Math.pow((this.x - second.x), 2) + Math.pow((this.y - second.y), 2) + Math.pow((this.z - second.z), 2));
     }
 }
