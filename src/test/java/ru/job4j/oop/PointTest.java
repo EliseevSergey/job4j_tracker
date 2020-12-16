@@ -1,13 +1,13 @@
 package ru.job4j.oop;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
+import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
-public class PointTest extends TestCase {
+public class PointTest{
 
+    @Test
     public void testDistance3d() {
         Point start = new Point(0, 0, 0);
         Point end = new Point(1, 1, 1);
