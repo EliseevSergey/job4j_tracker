@@ -12,9 +12,6 @@ public class Triangle {
     }
 
     public double half(double a, double b, double c) {
-        a = first.distance(second);
-        b = second.distance(third);
-        c = third.distance(first);
         return (a + b + c) / 2;
     }
 
@@ -27,7 +24,7 @@ public class Triangle {
         double ab = first.distance(second);
         double bc = second.distance(third);
         double ca = third.distance(first);
-        double p = (ab + bc + ca) / 2;
+        double p = this.half(ab, bc, ca);
         return rsl  = this.exist(ab, bc, ca)? Math.sqrt(p * (p - ab) * (p - bc) * (p - ca)) : -1;
     }
 }
