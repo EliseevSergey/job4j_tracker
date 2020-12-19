@@ -5,23 +5,20 @@ public class Triangle {
     private Point second;
     private Point third;
 
-    public Triangle(Point first, Point second, Point third) {
-        this.first = first;
-        this.second = second;
-        this.third = third;
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;
+        this.third = cp;
     }
 
-    public double half(Point first, Point second, Point third) {
-        double ab = first.distance(second);
-        double bc = second.distance(third);
-        double ca = third.distance(first);
-        return (ab + bc + ca) / 2;
+    public double half(double a, double b, double c) {
+        a = first.distance(second);
+        b = second.distance(third);
+        c = third.distance(first);
+        return (a + b + c) / 2;
     }
 
-    public boolean exist(Point first, Point second, Point third) {
-        double ab = first.distance(second);
-        double bc = second.distance(third);
-        double ca = third.distance(first);
+    public boolean exist(double ab, double bc, double ca) {
         return (ab + bc) > ca && (bc + ca) > ab && (ca + ab) > bc;
     }
 
@@ -31,6 +28,6 @@ public class Triangle {
         double bc = second.distance(third);
         double ca = third.distance(first);
         double p = (ab + bc + ca) / 2;
-        return rsl  = this.exist(first, second, third)? Math.sqrt(p * (p - ab) * (p - bc) * (p - ca)) : -1;
+        return rsl  = this.exist(ab, bc, ca)? Math.sqrt(p * (p - ab) * (p - bc) * (p - ca)) : -1;
     }
 }
