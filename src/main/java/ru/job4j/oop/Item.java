@@ -1,25 +1,17 @@
 package ru.job4j.oop;
 
+import java.time.LocalDateTime;
+
 public class Item {
-    private int id;
-    private String name;
+    private LocalDateTime created;
 
     public Item() {
+        this.created = LocalDateTime.now();
+
     }
 
-    public Item(int id) {
-        this.id = id;
-    }
-
-    public Item(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public static void main(String[] args) {
-        Item Empty = new Item();
-        Item Idishnick = new Item(7);
-        Item IdandName = new Item(777, "Petrovich");
+    public LocalDateTime getCreated() {
+        return created;
     }
 }
 
