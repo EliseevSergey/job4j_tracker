@@ -18,4 +18,12 @@ public class Shop {
         }
         return rsl;
     }
+
+    public static Product[] leftShift(Product products[], int start) {
+        for (int index = start; index < products.length - 1; index++) {
+            products[index] = products[index + 1];
+        }
+        products[products.length-1] = null;
+        return products;
+    }
 }
