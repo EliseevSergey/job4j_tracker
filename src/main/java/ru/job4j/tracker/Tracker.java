@@ -46,23 +46,28 @@ public class Tracker {
         return Arrays.copyOf(nameList, qty);
     }
 
-    public boolean replace(int id, Item item) {
+    public boolean replace(int id, Item item) { // override
         int index = indexOf(id);
-        if (index != -1) {
+        boolean rsl = index != -1;
+        if (rsl) {
             items[index] = item;
             items[index].setId(id);
-
+        } else {
+            System.out.println("Id was not found");
         }
-        return index != -1;
+        return rsl;
     }
 
     public boolean delete(int id) {
         int dltd = indexOf(id);
+        boolean rsl = dltd != -1;
         if (dltd != -1) {
             System.arraycopy(items, dltd + 1, items, dltd, size - dltd);
             items[size - 1] = null;
             size--;
+        } else {
+            System.out.println("Id was not found");
         }
-            return dltd != -1;
+        return rsl;
     }
 }
