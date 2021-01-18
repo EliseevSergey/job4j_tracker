@@ -27,11 +27,10 @@ public class Tracker {
 
     public Item findById(int id) {
         int index = indexOf(id);
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items[index] : Item.Antinull;
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+    public Item[] findAll() { return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String name) {
@@ -52,8 +51,6 @@ public class Tracker {
         if (rsl) {
             items[index] = item;
             items[index].setId(id);
-        } else {
-            System.out.println("Id was not found");
         }
         return rsl;
     }
@@ -65,8 +62,6 @@ public class Tracker {
             System.arraycopy(items, dltd + 1, items, dltd, size - dltd);
             items[size - 1] = null;
             size--;
-        } else {
-            System.out.println("Id was not found");
         }
         return rsl;
     }

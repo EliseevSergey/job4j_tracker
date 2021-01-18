@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class StartUI {
@@ -12,26 +13,27 @@ public class StartUI {
                 System.out.println("=== Create a new Item ====");
                 System.out.println("Create item name: ");
                 String name = scanner.nextLine();
-                Item item = new Item();
-                item.setName(name);
+                Item item = new Item(name);
                 tracker.add(item);
                 System.out.println("Item has been created");
             }
+
             else if (select == 1) {
                 System.out.println("Show all items by names");
-                for (int index = 0; index < tracker.findAll().length; index++) {
-                    System.out.println(tracker.findAll()[index].getName());
+                Item[] pool = tracker.findAll();
+                for (int index = 0; index < pool.length; index++) {
+                    System.out.println(pool[index]);
                 }
                 System.out.println("=The end of list=");
             }
+
             else if (select == 2) {
                 System.out.println("=== Edit item ====");
                 System.out.println("Input id of item which to be edited");
                 int id = Integer.valueOf(scanner.nextLine());
                 System.out.println("Input name of item which to be inputted in chosen id");
                 String name = scanner.nextLine();
-                Item newInput = new Item();
-                newInput.setName(name);
+                Item newInput = new Item(name);
                 tracker.replace(id, newInput);
                 if (tracker.replace(id, newInput)) {
                     System.out.println("Successfully Edited");
@@ -39,15 +41,41 @@ public class StartUI {
                     System.out.println("Edit was failed");
                 }
             }
+
             else if (select == 3) {
                 System.out.println("=== Delete item ====");
                 System.out.println("Input id of item which to be deleted");
                 int id = Integer.valueOf(scanner.nextLine());
-                tracker.delete(id);
                 if (tracker.delete(id)) {
                     System.out.println("Successfully deleted");
                 } else {
                     System.out.println("Deletion was failed");
+                }
+            }
+
+            else if (select == 4) {
+                System.out.println("=== Find Item by id ====");
+                System.out.println("Input id of item which to be found");
+                int id = Integer.valueOf(scanner.nextLine());
+                Item target = tracker.findById(id);
+                if (target != Item.Antinull) {
+                    System.out.println(target);
+                } else {
+                    System.out.println("not found with id: " + id);
+                }
+            }
+
+            else if (select == 5) {
+                System.out.println("=== Find Items name ====");
+                System.out.println("Input name of item which to be found");
+                String name = scanner.nextLine();
+                Item[] target = tracker.findByName(name);
+                if (target.length == 0) {
+                    System.out.println("not found with name: " + name);
+                } else {
+                    for (int index = 0; index < target.length; index++) {
+                        System.out.println(target[index]);
+                    }
                 }
             }
 
