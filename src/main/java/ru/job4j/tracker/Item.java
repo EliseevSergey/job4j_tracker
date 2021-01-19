@@ -3,23 +3,12 @@ package ru.job4j.tracker;
 import java.util.Objects;
 
 public class Item {
-    public static final Item Antinull = new Item("Empty");
     private int id;
     private String name;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return id == item.id &&
-                Objects.equals(name, item.name);
-    }
 
     public Item (String name) {
     this.name = name;
     }
-
     public int getId() {
         return id;
     }
@@ -29,6 +18,15 @@ public class Item {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return id == item.id &&
+                Objects.equals(name, item.name);
     }
 
     @Override

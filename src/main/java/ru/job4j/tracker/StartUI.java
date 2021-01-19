@@ -58,7 +58,7 @@ public class StartUI {
                 System.out.println("Input id of item which to be found");
                 int id = Integer.valueOf(scanner.nextLine());
                 Item target = tracker.findById(id);
-                if (target != Item.Antinull) {
+                if (target != null) {
                     System.out.println(target);
                 } else {
                     System.out.println("not found with id: " + id);
