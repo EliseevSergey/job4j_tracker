@@ -2,14 +2,14 @@ package ru.job4j.oop;
 
 public class Garazh {
     public static void main(String[] args) {
-        Vehicle Tu =  new Plane();
-        Vehicle An = new Plane();
-        Vehicle Elektro = new Train();
-        Vehicle Tovar = new Train();
-        Vehicle Ikar = new Bus();
-        Vehicle Paz = new Bus();
+        Vehicle tu =  new Plane();
+        Vehicle an = new Plane();
+        Vehicle elektro = new Train();
+        Vehicle tovar = new Train();
+        Vehicle ikarus = new Bus();
+        Vehicle pazik = new Bus();
 
-        Vehicle[] garazh = new Vehicle[]{Tu, An, Elektro, Tovar, Ikar, Paz};
+        Vehicle[] garazh = new Vehicle[]{tu, an, elektro, tovar, ikarus, pazik};
         for (Vehicle a : garazh) {
             a.move();
             a.slowdown();
