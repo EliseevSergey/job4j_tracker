@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import ru.job4j.poly.Transport;
 
 public class StartUI {
-    public static void createInit(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Create item Name");
         Item item = new Item(name);
@@ -25,7 +25,6 @@ public class StartUI {
         int id = input.askInt("Input id of item which to be edited");
         String name = input.askStr("Input name of item which to be inputted in chosen id");
         Item newInput = new Item(name);
-        tracker.replace(id, newInput);
         if (tracker.replace(id, newInput)) {
             System.out.println("Successfully Edited");
         } else {
@@ -73,7 +72,7 @@ public class StartUI {
             this.showMenu();
             int select = input.askInt("Select");
             if (select == 0) {
-                StartUI.createInit(input, tracker);
+                StartUI.createItem(input, tracker);
             }
 
             else if (select == 1) {
