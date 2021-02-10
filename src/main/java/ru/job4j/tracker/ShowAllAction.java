@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
-public class ShowAll implements UserAction {
+public class ShowAllAction implements UserAction {
     private final Output out;
-    public ShowAll(Output out) {
+    public ShowAllAction(Output out) {
         this.out = out;
     }
 
@@ -16,7 +16,6 @@ public class ShowAll implements UserAction {
         Item[] pool = tracker.findAll();
         for (int index = 0; index < pool.length; index++) {
             out.println(pool[index]);
-
         }
         return true;
     }

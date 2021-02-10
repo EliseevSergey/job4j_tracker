@@ -8,7 +8,7 @@ public class CreateAction implements UserAction {
 
     @Override
     public String name() {
-        return "=== Create ====";
+        return "=== Create item ===";
     }
 
     @Override

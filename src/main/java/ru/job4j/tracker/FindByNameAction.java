@@ -8,7 +8,7 @@ public class FindByNameAction implements UserAction {
 
     @Override
     public String name() {
-        return "=== Find Items name ====";
+        return "=== Find Items name ===";
     }
     @Override
     public boolean execute (Input input, Tracker tracker) {
