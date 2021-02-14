@@ -8,9 +8,9 @@ public class UserStore {
                 rsl = users[index];
                 break;
             }
-            if (rsl == null) {
-                throw new UserNotFoundException("Nothing was found");
-            }
+        }
+        if (rsl == null) {
+            throw new UserNotFoundException("Nothing was found");
         }
         return rsl;
     }
