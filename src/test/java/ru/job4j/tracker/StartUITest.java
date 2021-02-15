@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import ru.job4j.ex.User;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -125,6 +126,20 @@ public class StartUITest {
                 "Menu." + System.lineSeparator() +
                 "0. === Show all items by names ===" + System.lineSeparator() +
                 "1. === Exit ===" + System.lineSeparator()));
+    }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Input in = new StubInput(new String[]{"666","0"});
+        UserAction[] actions = {new ExitAction(out)};
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is("Menu." + System.lineSeparator() +
+                "0. === Exit ===" + System.lineSeparator() +
+                "Wrong input, you can select: 0 .. 0" + System.lineSeparator() +
+                "Menu." + System.lineSeparator() +
+                "0. === Exit ===" + System.lineSeparator()));
     }
 }
 
