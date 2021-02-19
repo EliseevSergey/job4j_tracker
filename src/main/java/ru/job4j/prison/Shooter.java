@@ -6,7 +6,7 @@ public class Shooter {
         staff.release(new Convicted());
     }
 
-    public void close(Convicted convicted) {
+    public void release(Convicted convicted) {
         staff.release(new Convicted());
     }
 
@@ -15,7 +15,7 @@ public class Shooter {
 
     public static void main(String[] args) {
         Shooter zorki = new Shooter();
-        zorki.close(new Convicted());
+        zorki.release(new Convicted());
         zorki.shoot();
     }
 }
