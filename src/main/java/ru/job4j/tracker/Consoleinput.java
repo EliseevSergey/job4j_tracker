@@ -12,6 +12,7 @@ public class Consoleinput implements Input {
     }
 
     @Override
-    public int askInt(String question) { return Integer.valueOf(askStr(question));
+    public int askInt(String question) {
+        return Integer.valueOf(askStr(question));
     }
 }
