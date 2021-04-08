@@ -12,7 +12,7 @@ public class FactTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void WhenException() {
+    public void whenException() {
         Fact.calc(-9);
     }
 }
