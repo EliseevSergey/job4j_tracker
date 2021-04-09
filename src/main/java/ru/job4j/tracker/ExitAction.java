@@ -10,8 +10,9 @@ public class ExitAction implements UserAction {
     public String name() {
         return "=== Exit ===";
     }
+
     @Override
-    public boolean execute (Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker) {
         return false;
     }
 }
