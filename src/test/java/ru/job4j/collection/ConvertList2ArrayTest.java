@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class ConvertList2ArrayTest {
     @Test
-    public void quad() {
+    public void whenTree() {
         ConvertList2Array list = new ConvertList2Array();
         int[][] result = list.toArray(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7), 3);
@@ -20,7 +20,7 @@ public class ConvertList2ArrayTest {
     }
 
     @Test
-    public void rectangular() {
+    public void whenTwo() {
         ConvertList2Array list = new ConvertList2Array();
         int[][] result = list.toArray(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7), 2);
@@ -33,4 +33,15 @@ public class ConvertList2ArrayTest {
         assertThat(result, is(expect));
     }
 
+    @Test
+    public void whenFive() {
+        ConvertList2Array list = new ConvertList2Array();
+        int[][] result = list.toArray(
+                Arrays.asList(1, 2, 3, 4, 5, 6, 7), 5);
+        int[][] expect = {
+                {1, 2, 3, 4, 5},
+                {6, 7, 0, 0, 0},
+        };
+        assertThat(result, is(expect));
+    }
 }
