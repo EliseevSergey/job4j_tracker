@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class PhoneDictionaryTest {
     @Test
-    public void whenFindByName() throws NoOneWasFoundException {
+    public void whenFindByName() {
         PhoneDictionary musicians = new PhoneDictionary();
         musicians.add(new Person("Curt", "Cobain", "666777", "Voronezh"));
         ArrayList<Person> result = musicians.find("urt");
@@ -16,7 +17,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void whenFindBySurname() throws NoOneWasFoundException {
+    public void whenFindBySurname() {
         PhoneDictionary musicians = new PhoneDictionary();
         musicians.add(new Person("Curt", "Cobain", "666777", "Voronezh"));
         ArrayList<Person> result = musicians.find("oba");
@@ -24,7 +25,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void whenFindByPhone() throws NoOneWasFoundException {
+    public void whenFindByPhone() {
         PhoneDictionary musicians = new PhoneDictionary();
         musicians.add(new Person("Curt", "Cobain", "666777", "Voronezh"));
         ArrayList<Person> result = musicians.find("666");
@@ -32,7 +33,7 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void whenFindByAddressTwo() throws NoOneWasFoundException {
+    public void whenFindByAddressTwo() {
         PhoneDictionary musicians = new PhoneDictionary();
         musicians.add(new Person("Curt", "Cobain", "666777", "Voronezh"));
         musicians.add(new Person("David", "Gilmor", "333666", "Voronezh"));
@@ -40,10 +41,12 @@ public class PhoneDictionaryTest {
         assertThat(result.get(1).getAddress(), is("Voronezh"));
     }
 
-    @Test(expected = NoOneWasFoundException.class)
-    public void whenException() throws NoOneWasFoundException {
+    @Test
+    public void whenEmptyArrayList() {
         PhoneDictionary musicians = new PhoneDictionary();
         musicians.add(new Person("Curt", "Cobain", "666777", "Voronezh"));
-        musicians.find("HardToFind");
+        musicians.add(new Person("David", "Gilmor", "333666", "Voronezh"));
+        ArrayList<Person> result = musicians.find("Saint-Petersburg");
+        Assert.assertTrue(result.isEmpty());
     }
 }

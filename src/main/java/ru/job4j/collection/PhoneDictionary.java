@@ -9,18 +9,15 @@ public class PhoneDictionary {
         this.people.add(person);
     }
 
-    public ArrayList<Person> find(String key) throws NoOneWasFoundException {
+    public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        for (int index = 0; index < people.size(); index++) {
-            if (people.get(index).getName().contains(key)
-                    || people.get(index).getSurname().contains(key)
-                    || people.get(index).getAddress().contains(key)
-                    || people.get(index).getPhone().contains(key)) {
-                result.add(people.get(index));
+        for (Person person : people) {
+            if (person.getName().contains(key)
+                    || person.getSurname().contains(key)
+                    || person.getAddress().contains(key)
+                    || person.getPhone().contains(key)) {
+                result.add(person);
             }
-        }
-        if (result.size() == 0) {
-            throw new NoOneWasFoundException("No one was found");
         }
         return result;
     }

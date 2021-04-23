@@ -22,7 +22,7 @@ public class PriorityQueueTest {
         PriorityQueue queue = new PriorityQueue();
         queue.put(new Task("deadline", 2));
         queue.put(new Task("trash", 2));
-        queue.put(new Task("zhara", 2));
+        queue.put(new Task("zhara", 1));
         Task result = queue.take();
         assertThat(result.getDesc(), is("zhara"));
     }
