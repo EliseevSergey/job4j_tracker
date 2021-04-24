@@ -7,18 +7,15 @@ public class PassportOffice {
     private Map<String, Citizen> citizens = new HashMap<>();
 
     public boolean add(Citizen in) {
-        if (citizens.containsKey(in.getPassport())) {
-            return false;
-        } else {
+        boolean rsl = false;
+        if (!citizens.containsKey(in.getPassport())) {
             citizens.put(in.getPassport(), in);
-        return true;
+            rsl = true;
         }
+        return rsl;
     }
 
-    public Citizen get(String passport) throws NoOneWasFoundException {
-        if (citizens.get(passport) == null) {
-            throw new NoOneWasFoundException("Nobody was found");
-        }
+    public Citizen get(String passport) {
        return citizens.get(passport);
     }
  }

@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -7,10 +8,10 @@ import java.util.HashMap;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class PassportOfficeTest{
+public class PassportOfficeTest {
 
 @Test
-    public void add() throws NoOneWasFoundException {
+    public void add() {
     PassportOffice office = new PassportOffice();
     HashMap<String, Citizen> citizens = new HashMap<>();
     Citizen ivanov = new Citizen("123123", "Ivanov Stepan");
@@ -18,10 +19,12 @@ public class PassportOfficeTest{
     assertThat(office.get(ivanov.getPassport()), is(ivanov));
     }
 
-    @Test (expected = NoOneWasFoundException.class)
-    public void exception() throws NoOneWasFoundException {
+    @Test
+    public void duplication() {
         PassportOffice office = new PassportOffice();
         HashMap<String, Citizen> citizens = new HashMap<>();
-        office.get("666");
+        Citizen ivanov = new Citizen("123123", "Ivanov Stepan");
+        office.add(ivanov);
+        Assert.assertFalse(office.add(ivanov));
     }
 }
