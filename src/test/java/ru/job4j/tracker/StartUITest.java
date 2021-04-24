@@ -20,7 +20,7 @@ public class StartUITest {
         actions.add(new CreateAction(out));
         actions.add(new ExitAction(out));
     new StartUI(out).init(in, tracker, actions);
-    assertThat(tracker.findAll()[0].getName(), is("Diamond"));
+    assertThat(tracker.findAll().get(0).getName(), is("Diamond"));
     }
 
         @Test
@@ -71,7 +71,7 @@ public class StartUITest {
         actions.add(new FindByIdAction(out));
         actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getId(), is(1));
+        assertThat(tracker.findAll().get(0).getId(), is(1));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Must die"));
-        Input in = new StubInput(new String[] {"0", String.valueOf(tracker.findByName("Must die")[0].getId()), "1"});
+        Input in = new StubInput(new String[] {"0", String.valueOf(tracker.findByName("Must die").get(0).getId()), "1"});
         List<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteAction(out));
         actions.add(new ExitAction(out));
