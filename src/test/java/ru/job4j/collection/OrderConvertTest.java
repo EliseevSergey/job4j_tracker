@@ -36,14 +36,4 @@ public class OrderConvertTest {
         HashMap<String, Order> map = OrderConvert.process(in);
         assertThat(map.get("4"), is(new Order("4", "Taxi")));
     }
-
-
-
-
-
-
-
-
-
-
 }
