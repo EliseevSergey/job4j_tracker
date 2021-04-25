@@ -18,12 +18,32 @@ public class OrderConvertTest {
     }
 
     @Test
-    public void whenDuplicted() {
+    public void whenDuplictedKeyDifValue() {
+        List<Order> in = Arrays.asList(
+                new Order("4", "Taxi"),
+                new Order("4", "Ski")
+                );
+        HashMap<String, Order> map = OrderConvert.process(in);
+        assertThat(map.get("4"), is(new Order("4", "Ski")));
+    }
+
+    @Test
+    public void whenDuplictedKeyAndValue() {
         List<Order> in = Arrays.asList(
                 new Order("4", "Taxi"),
                 new Order("4", "Taxi")
-                );
+        );
         HashMap<String, Order> map = OrderConvert.process(in);
         assertThat(map.get("4"), is(new Order("4", "Taxi")));
     }
+
+
+
+
+
+
+
+
+
+
 }
