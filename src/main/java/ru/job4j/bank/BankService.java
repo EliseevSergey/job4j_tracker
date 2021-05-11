@@ -20,7 +20,7 @@ public class BankService {
     }
     
     public User findByPassport(String passport) {
-        User rsl = new User("plug", "plug");
+        User rsl = new User("-1", "-1");
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 rsl = user;
@@ -31,8 +31,8 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        Account rsl = new Account("plug", 0);
-        if (findByPassport(passport) != null) {
+        Account rsl = null;
+        if (findByPassport(passport).getPassport() != "-1") {
             User user = findByPassport(passport);
             for (Account account : users.get(user)) {
                 if (account.getRequisite().equals(requisite)) {
@@ -40,7 +40,7 @@ public class BankService {
                     break;
                 }
             }
-        } else rsl = null;
+        }
         return rsl;
     }
 
@@ -50,10 +50,9 @@ public class BankService {
        Account senderAccount = findByRequisite(srcPassport, scrRequisite);
        User receiver = findByPassport(desPassport);
        Account receiverAccount = findByRequisite(desPassport, destRequsite);
-       System.out.println(receiverAccount.getBalance());
-       System.out.println(senderAccount.getBalance());
-       if (users.containsKey(users.get(sender)) && users.containsKey(users.get(receiver)) && (senderAccount.getBalance() > amount)) {
+       if (users.containsKey(sender) && users.containsKey(receiver) && (senderAccount.getBalance() >= amount)) {
            receiverAccount.setBalance(receiverAccount.getBalance() + amount);
+           senderAccount.setBalance(senderAccount.getBalance() - amount);
            rsl = true;
        }
        return rsl;
