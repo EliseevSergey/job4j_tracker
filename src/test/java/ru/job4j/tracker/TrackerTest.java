@@ -32,7 +32,6 @@ public class TrackerTest {
     }
 
     @Test
-
     public void whenDelete() {
         Tracker tracker = new Tracker();
         Item bug = new Item("Bug");
@@ -52,14 +51,10 @@ public class TrackerTest {
         c.setId(3);
         Item d = new Item("D");
         d.setId(4);
+        List<Item> before = Arrays.asList(c, a, b, d);
+        Collections.sort(before, new SortDown());
         List<Item> expect = Arrays.asList(d, c, b, a);
-        Tracker tracker = new Tracker();
-        tracker.getItems().add(a);
-        tracker.getItems().add(b);
-        tracker.getItems().add(c);
-        tracker.getItems().add(d);
-        Collections.sort(tracker.getItems(), new SortDown());
-        assertThat(expect, is(tracker.getItems()));
+        assertThat(expect, is(before));
     }
 
     @Test
@@ -72,14 +67,10 @@ public class TrackerTest {
         c.setId(3);
         Item d = new Item("D");
         d.setId(4);
+        List<Item> before = Arrays.asList(b, c, a, d);
+        Collections.sort(before, new SortUp());
         List<Item> expect = Arrays.asList(a, b, c, d);
-        Tracker tracker = new Tracker();
-        tracker.getItems().add(d);
-        tracker.getItems().add(c);
-        tracker.getItems().add(b);
-        tracker.getItems().add(a);
-        Collections.sort(tracker.getItems(), new SortUp());
-        assertThat(expect, is(tracker.getItems()));
+        assertThat(expect, is(before));
     }
 }
 

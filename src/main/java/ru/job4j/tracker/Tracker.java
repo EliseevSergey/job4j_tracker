@@ -8,10 +8,6 @@ public class Tracker {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
-    public List<Item> getItems() {
-        return items;
-    }
-
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
@@ -65,10 +61,5 @@ public class Tracker {
             items.remove(dltd);
         }
         return rsl;
-    }
-
-    public void main(String[] args) {
-        Collections.sort(items, new SortUp());
-        Collections.sort(items, new SortDown());
     }
 }
