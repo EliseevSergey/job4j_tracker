@@ -14,13 +14,13 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if(!users.get(user).contains(account)) {
+        if(user != null && !users.get(user).contains(account)) {
             users.get(user).add(account);
         }
     }
     
     public User findByPassport(String passport) {
-        User rsl = new User("-1", "-1");
+        User rsl = null;
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 rsl = user;
@@ -32,8 +32,8 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         Account rsl = null;
-        if (findByPassport(passport).getPassport() != "-1") {
-            User user = findByPassport(passport);
+        User user = findByPassport(passport);
+        if (user != null) {
             for (Account account : users.get(user)) {
                 if (account.getRequisite().equals(requisite)) {
                     rsl = account;
@@ -46,13 +46,11 @@ public class BankService {
 
     public boolean moneyTransfert(String srcPassport, String scrRequisite, String desPassport, String destRequsite, double amount){
        boolean rsl = false;
-       User sender = findByPassport(srcPassport);
-       Account senderAccount = findByRequisite(srcPassport, scrRequisite);
-       User receiver = findByPassport(desPassport);
-       Account receiverAccount = findByRequisite(desPassport, destRequsite);
-       if (users.containsKey(sender) && users.containsKey(receiver) && (senderAccount.getBalance() >= amount)) {
-           receiverAccount.setBalance(receiverAccount.getBalance() + amount);
-           senderAccount.setBalance(senderAccount.getBalance() - amount);
+       Account sender = findByRequisite(srcPassport, scrRequisite);
+       Account receiver = findByRequisite(desPassport, destRequsite);
+       if (sender != null && receiver != null && sender.getBalance() >= amount) {
+           receiver.setBalance(receiver.getBalance() + amount);
+           sender.setBalance(sender.getBalance() - amount);
            rsl = true;
        }
        return rsl;
