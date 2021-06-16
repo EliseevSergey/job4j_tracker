@@ -13,10 +13,10 @@ public class StringCompare implements Comparator<String> {
                 rsl = decision;
                 break;
             }
-            if (decision == 0) {
-                        rsl = Integer.compare(o1.length(), o2.length());
-                    }
-                }
+        }
+        if (rsl == 0) {
+            rsl = Integer.compare(o1.length(), o2.length());
+        }
     return rsl;
     }
 }
