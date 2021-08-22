@@ -13,7 +13,7 @@ public class Dog {
     }
 
     public void show() {
-        System.out.println(this.name + " eat "+ this.food);
+        System.out.println(this.name + " eat " + this.food);
     }
 
     public static void main(String[] args) {

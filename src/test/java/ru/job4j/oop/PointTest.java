@@ -3,10 +3,7 @@ package ru.job4j.oop;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class PointTest{
-
+public class PointTest {
     @Test
     public void testDistance3d() {
         Point start = new Point(0, 0, 0);

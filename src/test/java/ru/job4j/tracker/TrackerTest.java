@@ -41,7 +41,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void SortDown() {
+    public void sortDown() {
         Item a = new Item("A");
         a.setId(1);
         Item b = new Item("B");
@@ -57,7 +57,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void SortUp() {
+    public void sortUp() {
         Item a = new Item("A");
         a.setId(1);
         Item b = new Item("B");

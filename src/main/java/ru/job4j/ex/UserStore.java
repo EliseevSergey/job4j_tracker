@@ -16,7 +16,7 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid() == false || user.getUserName().length() < 3) {
+        if (!user.isValid() || user.getUserName().length() < 3) {
             throw new UserInvalidException("Invalid user");
         }
         return true;
@@ -28,11 +28,9 @@ public class UserStore {
         };
         try {
             validate(findUser(users, "Bro"));
-        }
-        catch (UserInvalidException invalid) {
+        } catch (UserInvalidException invalid) {
             System.out.println("User is not valid");
-        }
-        catch (UserNotFoundException notFound) {
+        } catch (UserNotFoundException notFound) {
             System.out.println("User is not found");
          }
     }

@@ -10,13 +10,12 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class JobTest {
     @Test
-    public void whenPriorityUp () {
+    public void whenPriorityUp() {
         List<Job> sueta = Arrays.asList(
                 new Job("Cooking", 3),
                 new Job("Sport", 1),
                 new Job("CleanUp", 2),
-                new Job("Sleep", 4)
-        );
+                new Job("Sleep", 4));
         Collections.sort(sueta, new SortPriorityUp());
         Iterator<Job> it = sueta.iterator();
         assertThat(it.next(), is(new Job("Sleep", 4)));
@@ -27,13 +26,12 @@ public class JobTest {
     }
 
     @Test
-    public void whenPriorityDown () {
+    public void whenPriorityDown() {
         List<Job> sueta = Arrays.asList(
                 new Job("Cooking", 3),
                 new Job("Sport", 1),
                 new Job("CleanUp", 2),
-                new Job("Sleep", 4)
-        );
+                new Job("Sleep", 4));
         Collections.sort(sueta, new SortPriorityDown());
         Iterator<Job> it = sueta.iterator();
         assertThat(it.next(), is(new Job("Sport", 1)));
@@ -43,13 +41,12 @@ public class JobTest {
     }
 
     @Test
-    public void whenNameAlphabetReverse () {
+    public void whenNameAlphabetReverse() {
         List<Job> sueta = Arrays.asList(
                 new Job("Cooking", 3),
                 new Job("Sport", 1),
                 new Job("CleanUp", 2),
-                new Job("Sleep", 4)
-        );
+                new Job("Sleep", 4));
         Collections.sort(sueta, new SortNameAlphabetReverse());
         Iterator<Job> it = sueta.iterator();
         assertThat(it.next(), is(new Job("Sport", 1)));
@@ -59,13 +56,12 @@ public class JobTest {
     }
 
     @Test
-    public void whenNameAlphabet () {
+    public void whenNameAlphabet() {
         List<Job> sueta = Arrays.asList(
                 new Job("Cooking", 3),
                 new Job("Sport", 1),
                 new Job("CleanUp", 2),
-                new Job("Sleep", 4)
-        );
+                new Job("Sleep", 4));
         Collections.sort(sueta, new SortNameAlphabet());
         Iterator<Job> it = sueta.iterator();
         assertThat(it.next(), is(new Job("CleanUp", 2)));
@@ -76,23 +72,23 @@ public class JobTest {
 
     @Test
     public void whenComparatorNameUpandPriorityUp() {
-        Comparator<Job> cmpNameAlphabetPriorityUp = new SortNameAlphabet().thenComparing(new SortPriorityUp());
+        Comparator<Job> cmpNameAlphabetPriorityUp =
+                new SortNameAlphabet().thenComparing(new SortPriorityUp());
         int rsl = cmpNameAlphabetPriorityUp.compare(
                 new Job("A", 666),
-                new Job ("A", 1)
-        );
+                new Job("A", 1));
         assertThat(rsl, lessThan(0));
     }
 
     @Test
     public void whenComparatorPriorityDownNameAlphabet() {
-        Comparator<Job> cmpPriorityNameAlphabet = new SortPriorityDown().thenComparing(new SortNameAlphabet());
+        Comparator<Job> cmpPriorityNameAlphabet =
+                new SortPriorityDown().thenComparing(new SortNameAlphabet());
         List<Job> sueta = Arrays.asList(
                 new Job("Z", 1),
                 new Job("Y", 2),
                 new Job("Y", 3),
-                new Job("X",1)
-        );
+                new Job("X", 1));
         Collections.sort(sueta, cmpPriorityNameAlphabet);
         Iterator<Job> it = sueta.iterator();
         assertThat(it.next(), is(new Job("X", 1)));

@@ -52,7 +52,8 @@ public class BankServiceTest {
         bank.add(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
         bank.addAccount(user.getPassport(), new Account("113", 50D));
-        assertFalse(bank.moneyTransfert(user.getPassport(), "5546", user.getPassport(), "113", 200D));
+        assertFalse(bank.moneyTransfert(user.getPassport(), "5546", user.getPassport(), "113",
+                200D));
     }
 
     @Test

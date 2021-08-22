@@ -5,6 +5,7 @@ public class College {
         Student shkolota = new Student();
         shkolota.setSurname("Ivanov");
         shkolota.setGroup("1019/2");
-        System.out.println("Name: " + shkolota.getSurname() + " group: " + shkolota.getGroup() + " entrance: " + shkolota.getCreated());
+        System.out.println("Name: " + shkolota.getSurname() + " group: "
+                + shkolota.getGroup() + " entrance: " + shkolota.getCreated());
     }
 }

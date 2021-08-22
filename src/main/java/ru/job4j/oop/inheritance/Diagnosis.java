@@ -3,7 +3,7 @@ package ru.job4j.oop.inheritance;
 public class Diagnosis {
     private String diagnosis;
 
-    public Diagnosis(){
+    public Diagnosis() {
     }
 
     public Diagnosis(String diagnosis) {

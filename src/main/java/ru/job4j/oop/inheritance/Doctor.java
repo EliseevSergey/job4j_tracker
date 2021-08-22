@@ -1,10 +1,10 @@
 package ru.job4j.oop.inheritance;
 
 public class Doctor extends Professional {
-    String experience;
-    String type;
+    private String experience;
+    private String type;
 
-    public Doctor(){
+    public Doctor() {
     }
 
     public Doctor(String experience, String type) {

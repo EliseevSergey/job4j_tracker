@@ -25,6 +25,7 @@ public class Triangle {
         double bc = second.distance(third);
         double ca = third.distance(first);
         double p = this.half(ab, bc, ca);
-        return rsl  = this.exist(ab, bc, ca)? Math.sqrt(p * (p - ab) * (p - bc) * (p - ca)) : -1;
+        rsl = this.exist(ab, bc, ca) ? Math.sqrt(p * (p - ab) * (p - bc) * (p - ca)) : -1;
+        return rsl;
     }
 }

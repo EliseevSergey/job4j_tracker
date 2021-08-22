@@ -1,7 +1,7 @@
 package ru.job4j.prison;
 
 public class Convicted {
-    private String Name;
+    private String name;
     private int number;
     private String reason;
     private int time;
@@ -12,7 +12,7 @@ public class Convicted {
     public void runaway() {
     }
 
-    public void meetingWithLoyer(){
+    public void meetingWithLoyer() {
     }
 
     public static void main(String[] args) {

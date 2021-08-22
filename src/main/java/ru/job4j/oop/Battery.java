@@ -6,16 +6,17 @@ public class Battery {
     public Battery(int level) {
         this.load = level;
     }
+
     public void exchange(Battery another) {
        another.load = this.load + another.load;
        this.load = 0;
     }
 
     public static void main(String[] args) {
-        Battery Nokia = new Battery(97);
+        Battery nokia = new Battery(97);
         Battery iPhone = new Battery(3);
-        System.out.println("Nokia:" + Nokia.load + " %" + " iPhone:" + iPhone.load + " %");
-        Nokia.exchange(iPhone);
-        System.out.println("Nokia:" + Nokia.load + " %" + " iPhone:" + iPhone.load + " %");
+        System.out.println("Nokia:" + nokia.load + " %" + " iPhone:" + iPhone.load + " %");
+        nokia.exchange(iPhone);
+        System.out.println("Nokia:" + nokia.load + " %" + " iPhone:" + iPhone.load + " %");
     }
 }

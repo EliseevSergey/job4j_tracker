@@ -15,12 +15,11 @@ public class FindEl {
             return rsl;
         }
 
-        public static void main (String[]args) {
+        public static void main(String[]args) {
             String[] pool = new String[]{"aa", "bb", "cc"};
             try {
                 System.out.println(FindEl.indexOf(pool, "cc"));
-            }
-            catch (ElementNotFoundException e) {
+            } catch (ElementNotFoundException e) {
                 e.printStackTrace();
             }
     }

@@ -10,7 +10,7 @@ public class ShopTest {
 
     @Test
     public void whenLastNull() {
-        Product products[] = new Product[5];
+        Product[] products = new Product[5];
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
@@ -20,7 +20,7 @@ public class ShopTest {
 
     @Test
     public void whenFirstNull() {
-        Product products[] = new Product[5];
+        Product[] products = new Product[5];
         products[1] = new Product("Milk", 10);
         int rsl = Shop.indexNull(products);
         assertThat(rsl, is(0));
@@ -28,7 +28,7 @@ public class ShopTest {
 
     @Test
     public void whenHasNotNull() {
-        Product products[] = new Product[1];
+        Product[] products = new Product[1];
         products[0] = new Product("Milk", 10);
         int rsl = Shop.indexNull(products);
         assertThat(rsl, is(-1));
@@ -63,7 +63,8 @@ public class ShopTest {
         products[3] = null;
         products[4] = new Product("Maslo", 6);
         Product[] rsl = Shop.leftShift(products, 2);
-        assertThat(rsl[2] = null, is(nullValue()));
+        rsl[2] = null;
+        assertThat(null, is(nullValue()));
         assertThat(rsl[3].getName(), is("Maslo"));
         assertThat(rsl[4], is(nullValue()));
     }

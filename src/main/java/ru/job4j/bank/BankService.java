@@ -8,17 +8,17 @@ import java.util.Map;
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
-    public void add (User user) {
+    public void add(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if(user != null && !users.get(user).contains(account)) {
+        if (user != null && !users.get(user).contains(account)) {
             users.get(user).add(account);
         }
     }
-    
+
     public User findByPassport(String passport) {
         User rsl = null;
         for (User user : users.keySet()) {
@@ -44,15 +44,16 @@ public class BankService {
         return rsl;
     }
 
-    public boolean moneyTransfert(String srcPassport, String scrRequisite, String desPassport, String destRequsite, double amount){
-       boolean rsl = false;
-       Account sender = findByRequisite(srcPassport, scrRequisite);
-       Account receiver = findByRequisite(desPassport, destRequsite);
-       if (sender != null && receiver != null && sender.getBalance() >= amount) {
-           receiver.setBalance(receiver.getBalance() + amount);
-           sender.setBalance(sender.getBalance() - amount);
-           rsl = true;
-       }
-       return rsl;
+    public boolean moneyTransfert(String srcPassport, String scrRequisite, String desPassport,
+                                  String destRequsite, double amount) {
+        boolean rsl = false;
+        Account sender = findByRequisite(srcPassport, scrRequisite);
+        Account receiver = findByRequisite(desPassport, destRequsite);
+        if (sender != null && receiver != null && sender.getBalance() >= amount) {
+            receiver.setBalance(receiver.getBalance() + amount);
+            sender.setBalance(sender.getBalance() - amount);
+            rsl = true;
+        }
+        return rsl;
     }
 }

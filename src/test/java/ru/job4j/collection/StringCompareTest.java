@@ -6,7 +6,6 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 
-
 public class StringCompareTest {
     @Test
     public void whenStringEqualsThenZero() {
@@ -16,52 +15,47 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenLeftLessThanRightResultShouldBeNegative () {
+    public void whenLeftLessThanRightResultShouldBeNegative() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Ivanov",
-                "Ivanova"
-        );
+                "Ivanova");
         assertThat(rst, lessThan(0));
     }
 
     @Test
-    public void whenRightLessThanLeftResultShouldBePositive () {
+    public void whenRightLessThanLeftResultShouldBePositive() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Sidorova",
-                "Sidorov"
-        );
+                "Sidorov");
         assertThat(rst, greaterThan(0));
     }
 
     @Test
-    public void whenLeftGreaterThanRightResultShouldBePositive () {
+    public void whenLeftGreaterThanRightResultShouldBePositive() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Petrov",
-                "Ivanova"
-        );
+                "Ivanova");
         assertThat(rst, greaterThan(0));
     }
 
     @Test
-    public void secondCharOfLeftGreaterThanRightShouldBePositive(){
+    public void secondCharOfLeftGreaterThanRightShouldBePositive() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Petrov",
-                "Patrov"
-        );
+                "Patrov");
         assertThat(rst, greaterThan(0));
     }
 
     @Test
-    public void secondCharOfLeftLessThanRightShouldBeNegative(){
+    public void secondCharOfLeftLessThanRightShouldBeNegative() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
                 "Patrova",
-                "Petrov"
-        );
+                "Petrov");
         assertThat(rst, lessThan(0));
     }
 }

@@ -2,6 +2,7 @@ package ru.job4j.prison;
 
 public class Shooter {
     private Staff staff = new Staff();
+
     public void release() {
         staff.release(new Convicted());
     }

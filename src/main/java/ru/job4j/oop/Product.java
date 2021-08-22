@@ -8,6 +8,7 @@ public final class Product {
         this.name = name;
         this.price = price;
     }
+
     public String label() {
         return name + "  " + price;
     }

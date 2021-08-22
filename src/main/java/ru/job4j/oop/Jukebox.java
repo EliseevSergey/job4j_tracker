@@ -7,16 +7,15 @@ public class Jukebox {
         }
         if (position == 2) {
             System.out.println("Good night");
-        }
-        else {
+        } else {
             System.out.println("Song was not found");
         }
     }
 
     public static void main(String[] args) {
-        Jukebox Player = new Jukebox();
-        Player.music(1);
-        Player.music(2);
-        Player.music(13);
+        Jukebox player = new Jukebox();
+        player.music(1);
+        player.music(2);
+        player.music(13);
     }
 }

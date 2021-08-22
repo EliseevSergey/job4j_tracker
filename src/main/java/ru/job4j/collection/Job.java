@@ -22,19 +22,19 @@ public class Job {
 
     @Override
     public String toString() {
-        return "Job{" +
-                "name='" + name + '\'' +
-                ", priority=" + priority +
-                '}';
+        return "Job { name='" + name + '\'' + ", priority=" + priority + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Job job = (Job) o;
-        return priority == job.priority &&
-                Objects.equals(name, job.name);
+        return priority == job.priority && Objects.equals(name, job.name);
     }
 
     @Override

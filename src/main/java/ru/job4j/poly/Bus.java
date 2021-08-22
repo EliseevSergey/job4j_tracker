@@ -2,10 +2,9 @@ package ru.job4j.poly;
 
 import java.util.Scanner;
 
-public class Bus implements Transport{
-
+public class Bus implements Transport {
     @Override
-    public void Go() {
+    public void go() {
     }
 
     @Override

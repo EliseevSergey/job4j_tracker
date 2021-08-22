@@ -14,10 +14,11 @@ public class Point {
     }
 
     public double distance(Point second) {
-        return Math.sqrt(Math.pow((this.x - second.x), 2) + Math.pow((this.y - second.y),2));
+        return Math.sqrt(Math.pow((this.x - second.x), 2) + Math.pow((this.y - second.y), 2));
     }
 
     public double distance3d(Point second) {
-        return Math.sqrt(Math.pow((this.x - second.x), 2) + Math.pow((this.y - second.y), 2) + Math.pow((this.z - second.z), 2));
+        return Math.sqrt(Math.pow((this.x - second.x), 2) + Math.pow((this.y - second.y), 2)
+                + Math.pow((this.z - second.z), 2));
     }
 }
