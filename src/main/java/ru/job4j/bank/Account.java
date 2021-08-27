@@ -2,7 +2,19 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает обьект Account - счет пользователя.
+ * назначает поля и getter & setter
+ * @author ELISEEV SERGEY
+ * version 1.0
+ */
+
 public class Account {
+    /**
+     * Поля обьекта Account:
+     * 1) String requisite - реквизиты
+     * 2) double balance -  остаток денежных средств
+     */
     private String requisite;
     private double balance;
 

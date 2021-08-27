@@ -2,7 +2,20 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает обьект User - клиент банка.
+ * назначает поля, getter & setter, переопределяет методы equals and hashCode
+ * @author ELISEEV SERGEY
+ * @version 1.0
+ */
+
 public class User {
+    /**
+     * Поля обьекта User:
+     * 1) String passport - номер паспорта
+     * 2) String username - фамилия
+     * я бы вообще не писал про поля - это и так понятно должно быть
+     */
     private String passport;
     private String username;
 
