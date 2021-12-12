@@ -25,16 +25,22 @@ public class DepDescCompTest {
 
     @Test
     public void sortAsc() {
-        List<String> input = Arrays.asList("K2/SK2/SSK2", "K2", "K1/SK1", "K1/SK1/SSK1","K2/SK1", "K1", "K2/SK2");
-        List<String> expect = Arrays.asList("K1", "K1/SK1", "K1/SK1/SSK1", "K2", "K2/SK1", "K2/SK2", "K2/SK2/SSK2");
+        List<String> input = Arrays.asList("K2/SK2/SSK2", "K2", "K1/SK1",
+                "K1/SK1/SSK1", "K2/SK1", "K1", "K2/SK2");
+        List<String> expect = Arrays.asList("K1", "K1/SK1", "K1/SK1/SSK1",
+                "K2", "K2/SK1", "K2/SK2", "K2/SK2/SSK2");
         Collections.sort(input);
         MatcherAssert.assertThat(input, is(expect));
     }
 
     @Test
     public void sortDecs() {
-        List<String> input = Arrays.asList("K2/SK2/SSK2", "K2", "K1/SK1", "K1/SK1/SSK1", "K1/SK1/SSK2",  "K1", "K2/SK2", "K2/SK1", "K1/SK2", "K2/SK1/SSK2", "K2/SK1/SSK1");
-        List<String> expect = Arrays.asList("K2", "K2/SK1","K2/SK1/SSK1", "K2/SK1/SSK2", "K2/SK2", "K2/SK2/SSK2", "K1", "K1/SK1", "K1/SK1/SSK1","K1/SK1/SSK2", "K1/SK2");
+        List<String> input = Arrays.asList("K2/SK2/SSK2", "K2", "K1/SK1",
+                "K1/SK1/SSK1", "K1/SK1/SSK2",
+                "K1", "K2/SK2", "K2/SK1", "K1/SK2", "K2/SK1/SSK2", "K2/SK1/SSK1");
+        List<String> expect = Arrays.asList("K2", "K2/SK1", "K2/SK1/SSK1",
+                "K2/SK1/SSK2", "K2/SK2", "K2/SK2/SSK2",
+                "K1", "K1/SK1", "K1/SK1/SSK1", "K1/SK1/SSK2", "K1/SK2");
         Collections.sort(input, new DepDescComp());
         MatcherAssert.assertThat(input, is(expect));
     }
