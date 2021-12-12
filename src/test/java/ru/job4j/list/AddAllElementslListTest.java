@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AddAllElementslListTest {
 @Test
-public void whenTheSame(){
+public void whenTheSame() {
     List<String> left = new ArrayList<>();
     left.add("first");
     left.add("second");

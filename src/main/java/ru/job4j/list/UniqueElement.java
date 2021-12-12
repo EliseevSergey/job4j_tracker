@@ -8,8 +8,7 @@ public class UniqueElement {
             return false;
         } else if (list.indexOf(str) == list.lastIndexOf(str)) {
             return true;
-        } else {
-            return false;
         }
+    return false;
     }
 }

@@ -11,6 +11,6 @@ public class GeomProgressionTest {
     @Test
     public void testGenerateAndSum() {
         int rsl = GeomProgression.generateAndSum(2, 2, 6);
-        assertThat(rsl, is (126));
+        assertThat(rsl, is(126));
     }
 }
