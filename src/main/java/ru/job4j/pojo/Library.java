@@ -16,7 +16,7 @@ public class Library {
             System.out.println("index " + index + " name: " + library[index].getName()
                     + " page: " + library[index].getPage());
         }
-        library[0] = shelf; // можно и просто переназначить без временной переменной
+        library[0] = shelf;
         library[0] = library[3];
         library[3] = shelf;
         for (int index = 0; index < library.length; index++) {
