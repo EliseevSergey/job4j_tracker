@@ -6,16 +6,12 @@ public class Departments {
     public static List<String> fillGaps(List<String> deps) {
         Set<String> unique = new LinkedHashSet<>();
         for (String line : deps) {
-            String[] itemPieces =  line.split("/");
-            String start = itemPieces[0];
-            unique.add(start);
-            for (String element : line.split("/")) {
-                if (!element.equals(start)) {
-                    start = start + "/" + element;
-                    unique.add(start);
+            String start = "";
+            for (String el : line.split("/")) {
+                start += "".equals(start) ? el : "/" + el;
+                unique.add(start);
                 }
             }
-        }
         return new ArrayList<>(unique);
     }
 
@@ -27,4 +23,3 @@ public class Departments {
         Collections.sort(orgs, new DepDescComp());
     }
 }
-
