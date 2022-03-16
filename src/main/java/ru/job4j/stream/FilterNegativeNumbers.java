@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class FilterNegativeNumbers {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(-2, -5, 3, 7);
+        List<Integer> numbers = Arrays.asList(-2, -5, 3, 8);
         List<Integer> positive = numbers.stream().filter(num -> num > 0).
                 collect(Collectors.toList());
         positive.forEach(System.out::println);
