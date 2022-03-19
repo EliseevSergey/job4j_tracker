@@ -15,7 +15,7 @@ public class ProfilesTest {
                 new Profile(first),
                 new Profile(second),
                 new Profile(third));
-        List<Adress> exp = List.of(first);
+        List<Adress> exp = List.of(first, second, third);
         List<Adress> rsl = Profiles.collect(profiles);
         assertThat(exp, is(rsl));
     }

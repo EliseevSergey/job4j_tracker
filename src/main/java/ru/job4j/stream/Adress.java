@@ -50,4 +50,14 @@ public class Adress {
     public int hashCode() {
         return Objects.hash(city, street, home, apartment);
     }
+
+    @Override
+    public String toString() {
+        return "Adress{"
+                + "city='" + city + '\''
+                + ", street='" + street + '\''
+                + ", home=" + home
+                + ", apartment=" + apartment
+                + '}';
+    }
 }
