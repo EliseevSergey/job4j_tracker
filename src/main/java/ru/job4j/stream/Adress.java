@@ -42,8 +42,8 @@ public class Adress {
         Adress adress = (Adress) o;
         return home == adress.home
                 && apartment == adress.apartment
-                && Objects.equals(city, adress.city)
-                && Objects.equals(street, adress.street);
+                && city.equals(adress.city)
+                && street.equals(adress.street);
     }
 
     @Override
