@@ -22,6 +22,7 @@ public class BankService {
 
     /**
      * метод добавляет Клиента банка в базу, если ранее он отсутвовал.
+     *
      * @param user Добавляемый Клиент
      */
     public void add(User user) {
@@ -31,8 +32,9 @@ public class BankService {
     /**
      * метод добавляет новый счет пользователя, предварительно проверив,
      * что такого счета у клиента нет.
+     *
      * @param passport номер паспорта клиента
-     * @param account добавляемый счет
+     * @param account  добавляемый счет
      */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
@@ -43,12 +45,13 @@ public class BankService {
 
     /**
      * метод выполняет поиск Клиента по номеру паспорта
+     *
      * @param passport номер паспорта клиента
      * @return возвращает обьект Клиент
      */
 
     public User findByPassport(String passport) {
-        User rsl = null;
+/*        User rsl = null;
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 rsl = user;
@@ -56,17 +59,23 @@ public class BankService {
             }
         }
         return rsl;
+    }*/
+        return users.keySet().stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
      * метод выполняет поиск счета по номеру паспорта клиента и реквизитам счета
+     *
      * @param passport
      * @param requisite
      * @return счет пользователя
      */
 
     public Account findByRequisite(String passport, String requisite) {
-        Account rsl = null;
+/*        Account rsl = null;
         User user = findByPassport(passport);
         if (user != null) {
             for (Account account : users.get(user)) {
@@ -77,8 +86,16 @@ public class BankService {
             }
         }
         return rsl;
+    }*/
+        User user = findByPassport(passport);
+        if (user != null) {
+            return users.get(user)
+                    .stream()
+                    .filter(account -> account.getRequisite().equals(requisite))
+                    .findFirst().orElse(null);
+        }
+        return null;
     }
-
     /**
      * метод осуществляет перевод денежных средств между Клиентами банка
      * и счетами отдельного клиента
