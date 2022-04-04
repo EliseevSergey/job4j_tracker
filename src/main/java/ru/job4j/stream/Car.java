@@ -65,7 +65,8 @@ public class Car {
             Car car = new Builder()
                     .buildBrand("Toyota")
                     .buildModel("Corolla")
-                    .buildVolume(500000)
+                    .buildLocalDate(LocalDate.of(2000, 01, 01))
+                    .buildVolume(2.5)
                     .buildColor("orange")
                     .build();
             System.out.println(car);
