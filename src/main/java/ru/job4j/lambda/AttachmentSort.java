@@ -1,7 +1,5 @@
 package ru.job4j.lambda;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
