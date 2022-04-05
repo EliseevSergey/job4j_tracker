@@ -41,4 +41,17 @@ public class Student {
     public int hashCode() {
         return Objects.hash(account);
     }
+
+    @Override
+    public String toString() {
+        return "Student{"
+                + "name='" + name
+                + '\'' + ", account='" + account + '\''
+                + ", group='" + group + '\'' + '}';
+    }
 }
+
+
+
+
+
