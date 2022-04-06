@@ -9,7 +9,7 @@ public class StudentLevel {
         return students.stream()
                 .filter(Objects::nonNull)
                 .sorted((left, right) -> Integer.compare(right.getScore(), left.getScore()))
-                .takeWhile(student -> student.getScore() >= bound)
+                .takeWhile(student -> student.getScore() > bound)
                 .collect(Collectors.toList());
         }
     }
