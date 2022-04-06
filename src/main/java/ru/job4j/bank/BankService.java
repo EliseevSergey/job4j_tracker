@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Класс описывает работу элементарного банковского сервиса для
@@ -37,12 +34,11 @@ public class BankService {
      * @param account  добавляемый счет
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null && !users.get(user).contains(account)) {
-            users.get(user).add(account);
+        Optional<User> user = findByPassport(passport);
+        if (user.isPresent() && !users.get(user.get()).contains(account)) {
+            users.get(user.get()).add(account);
         }
     }
-
     /**
      * метод выполняет поиск Клиента по номеру паспорта
      *
@@ -50,8 +46,8 @@ public class BankService {
      * @return возвращает обьект Клиент
      */
 
-    public User findByPassport(String passport) {
-/*        User rsl = null;
+/*    public User findByPassport(String passport) {
+*//*        User rsl = null;
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 rsl = user;
@@ -59,13 +55,18 @@ public class BankService {
             }
         }
         return rsl;
-    }*/
+    }*//*
         return users.keySet().stream()
                 .filter(user -> user.getPassport().equals(passport))
                 .findFirst()
                 .orElse(null);
-    }
+    }*/
 
+    public Optional<User> findByPassport(String passport) {
+        return users.keySet().stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst();
+    }
     /**
      * метод выполняет поиск счета по номеру паспорта клиента и реквизитам счета
      *
@@ -74,8 +75,8 @@ public class BankService {
      * @return счет пользователя
      */
 
-    public Account findByRequisite(String passport, String requisite) {
-/*        Account rsl = null;
+/*    public Account findByRequisite(String passport, String requisite) {
+*//*        Account rsl = null;
         User user = findByPassport(passport);
         if (user != null) {
             for (Account account : users.get(user)) {
@@ -86,7 +87,7 @@ public class BankService {
             }
         }
         return rsl;
-    }*/
+    }*//*
         User user = findByPassport(passport);
         if (user != null) {
             return users.get(user)
@@ -95,7 +96,19 @@ public class BankService {
                     .findFirst().orElse(null);
         }
         return null;
+    }*/
+
+    public Optional<Account> findByRequisite(String passport, String requisite) {
+        Optional<User> user = findByPassport(passport);
+        if (user.isPresent()) {
+            return users.get(user.get())
+                    .stream()
+                    .filter(account -> account.getRequisite().equals(requisite))
+                    .findFirst();
+        }
+        return Optional.empty();
     }
+
     /**
      * метод осуществляет перевод денежных средств между Клиентами банка
      * и счетами отдельного клиента
@@ -114,11 +127,11 @@ public class BankService {
     public boolean moneyTransfert(String srcPassport, String scrRequisite, String desPassport,
                                   String destRequsite, double amount) {
         boolean rsl = false;
-        Account sender = findByRequisite(srcPassport, scrRequisite);
-        Account receiver = findByRequisite(desPassport, destRequsite);
-        if (sender != null && receiver != null && sender.getBalance() >= amount) {
-            receiver.setBalance(receiver.getBalance() + amount);
-            sender.setBalance(sender.getBalance() - amount);
+        Optional<Account> sender = findByRequisite(srcPassport, scrRequisite);
+        Optional<Account> receiver = findByRequisite(desPassport, destRequsite);
+        if (sender.isPresent() && receiver.isPresent() && sender.get().getBalance() >= amount) {
+            receiver.get().setBalance(receiver.get().getBalance() + amount);
+            sender.get().setBalance(sender.get().getBalance() - amount);
             rsl = true;
         }
         return rsl;
