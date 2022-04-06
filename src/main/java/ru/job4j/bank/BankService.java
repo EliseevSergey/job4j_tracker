@@ -46,8 +46,8 @@ public class BankService {
      * @return возвращает обьект Клиент
      */
 
-/*    public User findByPassport(String passport) {
-*//*        User rsl = null;
+/**   public User findByPassport(String passport) {
+        User rsl = null;
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 rsl = user;
@@ -55,7 +55,7 @@ public class BankService {
             }
         }
         return rsl;
-    }*//*
+
         return users.keySet().stream()
                 .filter(user -> user.getPassport().equals(passport))
                 .findFirst()
@@ -75,8 +75,8 @@ public class BankService {
      * @return счет пользователя
      */
 
-/*    public Account findByRequisite(String passport, String requisite) {
-*//*        Account rsl = null;
+/**   public Account findByRequisite(String passport, String requisite) {
+        Account rsl = null;
         User user = findByPassport(passport);
         if (user != null) {
             for (Account account : users.get(user)) {
@@ -87,7 +87,6 @@ public class BankService {
             }
         }
         return rsl;
-    }*//*
         User user = findByPassport(passport);
         if (user != null) {
             return users.get(user)
