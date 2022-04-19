@@ -64,5 +64,5 @@ public class AnalyzeTest {
                 new Tuple("Lang", 80D),
                 new Tuple("Philosophy", 80D)
         )));
-    }
+    } 
 }
