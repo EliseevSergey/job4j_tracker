@@ -11,6 +11,14 @@ public class Tuple {
         this.score = score;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -20,8 +28,8 @@ public class Tuple {
             return false;
         }
         Tuple tuple = (Tuple) o;
-        return Double.compare(tuple.score, score) == 0 &&
-                Objects.equals(name, tuple.name);
+        return Double.compare(tuple.score, score) == 0
+                && Objects.equals(name, tuple.name);
     }
 
     @Override

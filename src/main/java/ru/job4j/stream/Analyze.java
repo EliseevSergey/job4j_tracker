@@ -1,8 +1,4 @@
 package ru.job4j.stream;
-
-import net.sf.saxon.functions.Empty;
-import ru.job4j.stream.Pupil;
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -11,20 +7,18 @@ public class Analyze {
     public static double averageScore(Stream<Pupil> stream) {
         return stream.flatMap(pupil -> pupil.getSubjects()
                 .stream())
-                .mapToInt(item -> item.getScore())
+                .mapToInt(Subject::getScore)
                 .average()
                 .orElse(0D);
     }
 
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {
-        return stream.map(pupil -> {
-            return new Tuple(pupil.getName(), pupil
-                    .getSubjects()
-                    .stream()
-                    .mapToInt(Subject::getScore)
-                    .average()
-                    .orElse(0D));
-                }
+        return stream.map(pupil -> new Tuple(pupil.getName(), pupil
+                .getSubjects()
+                .stream()
+                .mapToInt(Subject::getScore)
+                .average()
+                .orElse(0D))
         ).collect(Collectors.toList());
     }
 
@@ -32,7 +26,7 @@ public class Analyze {
         return stream.flatMap(pupil -> pupil.getSubjects()
                 .stream())
                 .collect(Collectors.groupingBy(Subject::getName,
-                        LinkedHashMap :: new,
+                        LinkedHashMap::new,
                         Collectors.averagingDouble(
                                 Subject::getScore
                         )))
@@ -43,15 +37,27 @@ public class Analyze {
     }
 
     public static Tuple bestStudent(Stream<Pupil> stream) {
-        return stream.map(pupil -> {
-            return new Tuple(pupil.getName(), pupil
-                    .getSubjects()
+        return stream.map(pupil -> new Tuple(pupil.getName(), pupil
+                            .getSubjects()
+                            .stream()
+                            .mapToDouble(Subject::getScore)
+                            .sum()
+                    )
+        )
+                .max(new TupleCmprtr())
+                .orElse(new Tuple("Empty", 0D));
+    }
+
+    public static Tuple bestSubject(Stream<Pupil> stream) {
+        return stream.flatMap(pupil -> pupil.getSubjects()
+                .stream())
+                .collect(Collectors.groupingBy(Subject::getName,
+                        LinkedHashMap::new,
+                        Collectors.summingDouble(Subject::getScore)))
+                .entrySet()
                 .stream()
-                .mapToDouble(subj -> subj.getScore())
-                .sum());
-        }
-        ).max(Comparator.comparing())
-
-
+                .map(item -> new Tuple(item.getKey(), item.getValue()))
+                .max(new TupleCmprtr())
+                .orElse(new Tuple("Empty", 0D));
     }
 }
