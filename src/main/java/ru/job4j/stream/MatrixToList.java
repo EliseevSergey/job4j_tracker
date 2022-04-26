@@ -12,4 +12,3 @@ public class MatrixToList {
                 .collect(Collectors.toList());
     }
 }
-
