@@ -1,5 +1,6 @@
 package ru.job4j.lambda;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 public class OptionalIfPresent {
@@ -10,7 +11,15 @@ public class OptionalIfPresent {
     }
 
     private static Optional<Integer> max(int[] data) {
-        Optional<Integer> rsl = Optional.empty();
+        if (data.length > 0) {
+            int submax = Arrays.stream(data).max().getAsInt();
+            return Optional.of(submax);
+        } else {
+            return Optional.empty();
+        }
+    }
+}
+ /*       Optional<Integer> rsl = Optional.empty();
         if (data.length > 0) {
             int max = data[0];
             for (int i = 1; i <= data.length - 1; i++) {
@@ -21,5 +30,5 @@ public class OptionalIfPresent {
             rsl = Optional.of(max);
            }
         return rsl;
-    }
-}
+    }*/
+
