@@ -4,7 +4,7 @@
     <artifactId>junior</artifactId>
     <packaging>jar</packaging>
     <version>2.0</version>
-    <name>tracker</name>
+    <name>memTracker</name>
     <url>http://job4j.ru/</url>
 
     <properties>
@@ -13,6 +13,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.4</version>
+        </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
