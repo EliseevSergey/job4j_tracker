@@ -1,8 +1,8 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.job4j</groupId>
-    <artifactId>junior</artifactId>
     <packaging>jar</packaging>
+    <artifactId>junior</artifactId>
     <version>2.0</version>
     <name>memTracker</name>
     <url>http://job4j.ru/</url>
@@ -38,6 +38,14 @@
     </dependencies>
     <build>
         <plugins>
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>4.15.0</version>
+                    <configuration>
+                        <propertyFile>db/liquibase.properties</propertyFile>
+                    </configuration>
+                </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
