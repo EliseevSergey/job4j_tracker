@@ -10,6 +10,8 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
+import junit.runner.Version;
+
 public class StartUITest {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -161,6 +163,11 @@ public class StartUITest {
                 + "Wrong input, you can select: 0 .. 0"
                 + System.lineSeparator() + "Menu." + System.lineSeparator()
                 + "0. === Exit ===" + System.lineSeparator()));
+    }
+
+    @Test
+    public void testJUnitVersion() {
+        assertThat(Version.id(), is("5"));
     }
 }
 
