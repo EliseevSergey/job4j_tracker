@@ -1,12 +1,6 @@
 package ru.job4j.tracker;
 
-import org.junit.jupiter.api.Test;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import ru.job4j.tracker.Item;
-
+import org.junit.jupiter.api.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -56,5 +50,51 @@ public class SqlTrackerTest {
         Item item = new Item("item");
         tracker.add(item);
         assertThat(tracker.findById(item.getId())).isEqualTo(item);
+    }
+
+    @Test
+    public void whenReplace() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item toBeReplaced = new Item("toBeReplaced");
+        tracker.add(toBeReplaced);
+        Item replacement = new Item("replacement");
+        Assertions.assertTrue(tracker.replace(toBeReplaced.getId(), replacement));
+    }
+
+    @Test
+    public void whenDelete() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item toBeDeleted = new Item("toBeDeleted");
+        tracker.add(toBeDeleted);
+        Assertions.assertTrue(tracker.delete(toBeDeleted.getId()));
+    }
+
+    @Test
+    public void whenFindByName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        int id = tracker.add(new Item("theSameName")).getId();
+        tracker.add(new Item("theSameName"));
+        tracker.add(new Item("theSameName"));
+        tracker.add(new Item("variousName"));
+        List<Item> list = new ArrayList<>();
+        list.add(tracker.findById(id));
+        list.add(tracker.findById(id + 1));
+        list.add(tracker.findById(id + 2));
+        Assertions.assertEquals(list, tracker.findByName("theSameName"));
+    }
+
+    @Test
+    public void whenFindAll() {
+        SqlTracker tracker = new SqlTracker(connection);
+        int id = tracker.add(new Item("Item1")).getId();
+        tracker.add(new Item("Item2"));
+        tracker.add(new Item("Item3"));
+        tracker.add(new Item("Item4"));
+        List<Item> list = new ArrayList<>();
+        list.add(tracker.findById(id));
+        list.add(tracker.findById(id + 1));
+        list.add(tracker.findById(id + 2));
+        list.add(tracker.findById(id + 3));
+        Assertions.assertEquals(list, tracker.findAll());
     }
 }

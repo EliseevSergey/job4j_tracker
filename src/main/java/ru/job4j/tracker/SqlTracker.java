@@ -87,14 +87,14 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findAll() {
-        List rsl = new ArrayList<>();
+        List<Item> rsl = new ArrayList<>();
         try (Statement st = cn.createStatement()) {
             st.execute("select * from items");
             ResultSet resultSet = st.getResultSet();
             while (resultSet.next()) {
                 Item item = new Item(resultSet.getString(2));
                 item.setId(resultSet.getInt(1));
-                item.setCreated(resultSet.getTimestamp(3).toLocalDateTime());
+                item.setCreated(resultSet.getTimestamp(3).toLocalDateTime().withNano(0));
                 rsl.add(item);
             }
         } catch (Exception e) {
@@ -105,7 +105,7 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findByName(String key) {
-        List rsl = new ArrayList<>();
+        List<Item> rsl = new ArrayList<>();
         try (PreparedStatement ps = cn.prepareStatement(
                 "select * from items where name = ?")) {
             ps.setString(1, key);
@@ -113,7 +113,7 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     Item item = new Item(resultSet.getString(2));
                     item.setId(resultSet.getInt(1));
-                    item.setCreated(resultSet.getTimestamp(3).toLocalDateTime());
+                    item.setCreated(resultSet.getTimestamp(3).toLocalDateTime().withNano(0));
                     rsl.add(item);
                 }
             }
@@ -133,6 +133,7 @@ public class SqlTracker implements Store {
                     if (resultSet.next()) {
                     rsl.setId(resultSet.getInt(1));
                     rsl.setName(resultSet.getString(2));
+                    rsl.setCreated(resultSet.getTimestamp(3).toLocalDateTime().withNano(0));
                 }
             }
         } catch (Exception e) {

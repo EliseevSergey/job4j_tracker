@@ -9,7 +9,7 @@ public class Item {
             DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     private int id;
     private String name;
-    private LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now().withNano(0);
 
     public Item(String name) {
     this.name = name;
@@ -47,8 +47,7 @@ public class Item {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name)
-                && Objects.equals(created, item.created);
+        return id == item.id && Objects.equals(name, item.name) && created.equals(item.created);
     }
 
     @Override
