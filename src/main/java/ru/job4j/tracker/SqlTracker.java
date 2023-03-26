@@ -42,7 +42,7 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         try (PreparedStatement ps = cn.prepareStatement(
-                "insert into items (name, creation_time) values (?, ?)",
+                "insert into items (name, created) values (?, ?)",
                 Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, item.getName());
                 ps.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
@@ -125,7 +125,7 @@ public class SqlTracker implements Store {
 
     @Override
     public Item findById(int id) {
-        Item rsl = null;
+        Item rsl = new Item("PLUG");
         try (PreparedStatement ps = cn.prepareStatement(
                 "select * from items where id = ?")) {
                 ps.setInt(1, id);
@@ -133,7 +133,6 @@ public class SqlTracker implements Store {
                     if (resultSet.next()) {
                     rsl.setId(resultSet.getInt(1));
                     rsl.setName(resultSet.getString(2));
-                    //rsl.setCreated(resultSet.getTimestamp(3).toLocalDateTime());
                 }
             }
         } catch (Exception e) {
