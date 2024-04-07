@@ -167,7 +167,7 @@ public class StartUITest {
 
     @Test
     public void testJUnitVersion() {
-        assertThat(Version.id(), is("5"));
+        assertThat(Version.id(), is("4.12"));
     }
 }
 
