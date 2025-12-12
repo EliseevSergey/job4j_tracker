@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import lombok.Data;
+import lombok.*;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
