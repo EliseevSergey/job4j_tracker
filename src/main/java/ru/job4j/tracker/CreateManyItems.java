@@ -14,7 +14,6 @@ public class CreateManyItems implements UserAction {
 
     @Override
     public boolean execute(Input input, Store tracker) {
-        //out.println("=== Create many items ===");
         int count = input.askInt("Введите кол-во заявок ");
         for (int i = 0; i < count; i++) {
             tracker.add(new Item("Заявка № " + i));

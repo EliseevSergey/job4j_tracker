@@ -13,7 +13,7 @@ public class MemTracker implements Store {
         return item;
     }
 
-    private int indexOf(int id) {
+    private int indexOf(Integer id) {
         int rsl = -1;
         for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
@@ -24,7 +24,7 @@ public class MemTracker implements Store {
         return rsl;
     }
 
-    public Item findById(int id) {
+    public Item findById(Integer id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
@@ -43,7 +43,7 @@ public class MemTracker implements Store {
         return nameList;
     }
 
-    public boolean replace(int id, Item item) {
+    public boolean replace(Integer id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
@@ -53,7 +53,7 @@ public class MemTracker implements Store {
         return rsl;
     }
 
-    public boolean delete(int id) {
+    public boolean delete(Integer id) {
         int dltd = indexOf(id);
         boolean rsl = dltd != -1;
         if (dltd != -1) {

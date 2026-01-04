@@ -24,8 +24,6 @@ public class HQLUsage {
         } finally {
             StandardServiceRegistryBuilder.destroy(registry);
         }
-
-
     }
 }
 
