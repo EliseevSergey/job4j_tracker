@@ -1,0 +1,6 @@
+CREATE TABLE j_user (
+id SERIAL PRIMARY KEY,
+name VARCHAR(200),
+role_id INT NOT NULL REFERENCES j_role(id)
+j_user_notification_id INT NOT NULL REFERENCES j_user_notification(id)
+);
