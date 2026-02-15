@@ -1,16 +1,14 @@
-package ru.job4j.tracker;
+package ru.job4j.toone;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.job4j.toone.Role;
-import ru.job4j.toone.User;
 
 import java.util.List;
 
-public class HibernateRun {
+public class HbmRun {
     public static void main(String[] args) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
@@ -21,12 +19,17 @@ public class HibernateRun {
             create(role, sf);
             var user = new User();
             user.setName("Admin Admin");
+            user.setMessengers(List.of(
+                    new UserMessenger(null, "tg", "@tg"),
+                    new UserMessenger(null,"wu", "@wu")
+            ));
             user.setRole(role);
             create(user, sf);
-            System.out.println(role);
-            List<User> users = findAll(User.class, sf);
-            findAll(User.class, sf)
-                    .forEach(System.out::println);
+            var stored = sf.openSession()
+                    .createQuery("FROM User WHERE id = :fId", User.class)
+                    .setParameter("fId", user.getId())
+                    .getSingleResult();
+            stored.getMessengers().forEach(System.out::println);
         }  catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -37,25 +40,7 @@ public class HibernateRun {
     public static <T> void create(T model, SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
-        session.save(model);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    public static void update(Item item, SessionFactory sf) {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        session.update(item);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    public static void delete(Integer id, SessionFactory sf) {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        Item item = new Item();
-        item.setId(id);
-        session.delete(item);
+        session.persist(model);
         session.getTransaction().commit();
         session.close();
     }
@@ -67,14 +52,5 @@ public class HibernateRun {
         session.getTransaction().commit();
         session.close();
         return list;
-    }
-
-    public static Item findById(Integer id, SessionFactory sf) {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        Item result = session.get(Item.class, id);
-        session.getTransaction().commit();
-        session.close();
-        return result;
     }
 }
