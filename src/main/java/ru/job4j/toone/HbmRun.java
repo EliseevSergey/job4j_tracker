@@ -21,7 +21,7 @@ public class HbmRun {
             user.setName("Admin Admin");
             user.setMessengers(List.of(
                     new UserMessenger(null, "tg", "@tg"),
-                    new UserMessenger(null,"wu", "@wu")
+                    new UserMessenger(null, "wu", "@wu")
             ));
             user.setRole(role);
             create(user, sf);
